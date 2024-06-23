@@ -1,0 +1,82 @@
+---
+name: Dánae Erynórë
+tagline: Wood Elf — Wild Sorcer lvl
+art: https://i.imgur.com/6vbnuY3.png
+mark: 2
+type: product
+---
+
+import { getEntry } from "astro:content";
+
+import MarkdownSnippet from "../../components/ArticleTeaser.astro";
+export const technonomicon = await getEntry(
+  "articles",
+  "what-is-the-technonomicon",
+);
+
+<Card>
+  <ArtSection>
+    <Top>
+      <Name>
+        {frontmatter.name}
+      </Name>
+
+      <Tagline>
+        {frontmatter.tagline}
+      </Tagline>
+
+      <Mark>
+        {frontmatter.mark}
+      </Mark>
+    </Top>
+
+    <Art src={frontmatter.art} />
+
+    <Box>
+      <BoxNumber
+        number="♥21"
+        frequency="3d6"
+        sup="Ballesta y dagas."
+        sub="Dote: Puntería élfica."
+      />
+
+      <BoxList>
+        * Fuerza: 11
+        * Destreza: 11
+        * Sabiduría: 11
+        * Inteligencia: 11
+        * Constitución: 11
+        * Carísma: 11
+      </BoxList>
+    </Box>
+  </ArtSection>
+
+  <Body>
+    Nacida en un pueblo oculto en los bosques de Krynn, proviene de una familia de destacados líderes y hábiles cazadores. Heredó habilidades mágicas, de caza y sanación, mostrando especial destreza en la magia del agua.
+  </Body>
+
+  <Tip>
+    Dánae no necesita dormir.
+  </Tip>
+
+  <Button href="/articles/danae">Saber más</Button>
+</Card>
+
+<More>
+  # The Technonomicon makes stitching content together simple.
+
+  You can take pieces of content and create some frankenstein-esque villianous blog. At least, that is what I did.
+  Here is a whole article I wrote about it. Well not the whole article, just the stuff not contained in a `More` tag.
+
+  <div class="border p-6">
+    <MarkdownSnippet
+      markdown={technonomicon}
+      href={`/articles/${technonomicon.slug}`}
+      cta="Read More"
+    />
+  </div>
+
+  There are a few tags that are important to the Technonomicon, and `More` might be the most important of all.
+
+  The contents of a `More` tag can be discarded, by rendering `More` as `Empty`
+</More>
